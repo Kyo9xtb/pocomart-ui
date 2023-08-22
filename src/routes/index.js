@@ -8,8 +8,9 @@ import News from '~/pages/News';
 import Products from '~/pages/Products';
 import Questions from '~/pages/Questions';
 import Recruit from '~/pages/Recruit';
+import Login from '~/pages/Login';
 
-console.log("About", About);
+
 //Public Routes
 const publicRoutes = [
     {
@@ -39,6 +40,10 @@ const publicRoutes = [
     {
         path: '/recruit',
         component: Recruit,
+    },
+    {
+        path: '/login',
+        component: Login,
     },
 ];
 //Private Routes
