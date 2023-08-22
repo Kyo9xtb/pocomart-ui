@@ -18,7 +18,6 @@ function SearchEmty() {
 
 function SearchResult({ data }) {
     function ProductItemSearch({ data }) {
-        console.log('input');
         const { image_url, title, price } = data;
         return (
             <div className={cx('wapper-product')}>
@@ -50,7 +49,7 @@ function Header() {
                 <div className={cx('row')}>
                     {/*logo */}
                     <div className={cx('col-lg-2 col-xl-3 col-md-3 col-6', 'col-logo')}>
-                        <Link to="/" className={cx('logo')}>
+                        <Link to="/" className={cx('logo')} title='Poco mart thiên đường mua sắm'>
                             <img src={images.logo} alt="Poco mart" />
                         </Link>
                     </div>

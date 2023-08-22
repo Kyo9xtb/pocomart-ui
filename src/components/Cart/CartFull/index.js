@@ -9,12 +9,12 @@ import Button from '~/components/Button';
 // import listCourses from '~/listCourses';
 
 const cx = classNames.bind(style);
-function CartItem({data}) {
+function CartItem({ data }) {
     const { image_url, title, price } = data;
     return (
         <div className={cx('cart-item')}>
             <div className={cx('wapper-item')}>
-                <Link to="#" className={cx('cart-image')}>
+                <Link to="#" className={cx('cart-image')} title={title}>
                     <img src={image_url} alt={title} />
                 </Link>
                 <div className={cx('cart-info')}>
@@ -28,7 +28,7 @@ function CartItem({data}) {
                             <label className={cx('title-quantity')}>Số lượng:</label>
                             <div className={cx('cart-input-btn')}>
                                 <button className={cx('items-count', 'btn-reduce')}>-</button>
-                                <input type="text" value='2' onChange={() => {}} />
+                                <input type="text" value="2" onChange={() => {}} />
                                 <button className={cx('items-count', 'btn-increase')}>+</button>
                             </div>
                         </div>
@@ -46,15 +46,13 @@ function CartItem({data}) {
         </div>
     );
 }
-function CartFull({data}) {
+function CartFull({ data }) {
     return (
         <div className={cx('cart')}>
             {/*cart-boody */}
             <div className={cx('cart-body')}>
                 {data.map((cours, index) => {
-                    return (
-                        <CartItem data={cours} key={index}/>
-                    )
+                    return <CartItem data={cours} key={index} />;
                 })}
             </div>
             {/*cart-footer */}
