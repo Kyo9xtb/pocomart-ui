@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Tippy from '@tippyjs/react/headless';
 // Import file
 import styles from './Header.module.scss';
-import images from '~/assets/image';
+import images from '~/assets/images';
 import CartEmty from '~/components/Cart/CartEmty';
 import CartFull from '~/components/Cart/CartFull';
 // Data test

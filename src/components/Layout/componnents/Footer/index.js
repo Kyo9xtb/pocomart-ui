@@ -1,12 +1,12 @@
 //Library import
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
-
-//File import
-import styles from './Footer.module.scss';
-import { publicRoutes as listPages } from '~/routes';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faGoogle, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
+
+//File import
+import { publicRoutes as listPages } from '~/routes';
+import styles from './Footer.module.scss';
 
 const cx = classNames.bind(styles);
 
@@ -98,7 +98,7 @@ function Footer() {
                                     <li>Địa chỉ: Tòa nhà Ladeco 266 Đội Cấn, Ba Đình, Hà Nội</li>
                                     <li>
                                         Điện thoại:{' '}
-                                        <Link class="fone" href="#">
+                                        <Link className={cx('fone')} href="#">
                                             19006750
                                         </Link>
                                         - Email: <Link href="#">support@sapo.vn</Link>
@@ -120,7 +120,9 @@ function Footer() {
                                             />
                                         </div>
                                         <div className={cx('subscribe')}>
-                                            <button className={cx('btn')}>Đăng ký</button>
+                                            <button type="submit" className={cx('btn')}>
+                                                Đăng ký
+                                            </button>
                                         </div>
                                     </div>
                                 </div>

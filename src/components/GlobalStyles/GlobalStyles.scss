@@ -7,6 +7,8 @@
     --text-input: #999ea1;
     --white: #fff;
     --primary: #eb3e32;
+    --width-menu-mega: 280px;
+    --link-color: #ffb416;
 }
 
 * {
@@ -117,11 +119,13 @@ button {
         max-width: 1200px;
     }
 }
+
 @media only screen and (max-width: 991px) {
     #tippy-2 {
         width: calc(100% - 20px) !important;
     }
 }
+
 /*Btn*/
 .btn {
     display: inline-block;

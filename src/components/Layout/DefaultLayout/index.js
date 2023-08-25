@@ -5,18 +5,17 @@ import React from 'react';
 // import styles from './DefaultLayout.module.scss';
 import Header from '../componnents/Header';
 import Footer from '../componnents/Footer';
-
-
-
+import NavbarHeader from '../componnents/Navbar';
 
 // const cx = classNames.bind(styles);
 
 function DefaultLayout({ children }) {
     return (
         <React.Fragment>
-            <Header/>
+            <Header />
+            <NavbarHeader />
             {children}
-            <Footer/>
+            <Footer />
         </React.Fragment>
     );
 }
