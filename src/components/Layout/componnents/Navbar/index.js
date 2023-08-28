@@ -3,9 +3,10 @@ import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 
 //File import
+import images from '~/assets/images';
 import styles from './Navbar.module.scss';
+//data test
 import { publicRoutes as listNavbars } from '~/routes';
-
 const cx = classNames.bind(styles);
 function MenuItem({ data, className, children }) {
     const classes = {};
@@ -21,6 +22,7 @@ function MenuItem({ data, className, children }) {
             >
                 {data.title}
             </Link>
+            {data.iconDesktop}
             {children}
         </li>
     );
@@ -40,9 +42,9 @@ function MenuItemMega({ data, className, children }) {
                 }}
             >
                 {data.title}
-                {data.iconDesktop}
+                {data.iconMenuMega}
             </Link>
-            {data.iconDesktop}
+            {data.iconMenuMega}
             {children}
         </li>
     );
@@ -50,7 +52,7 @@ function MenuItemMega({ data, className, children }) {
 function NavbarHeader() {
     return (
         <div className={cx('header-nav-main')}>
-            <div className={cx('container')}>
+            <div className={cx('container', ' container')}>
                 <div className={cx('header-menu')}>
                     <div className={cx('wapper-nav', 'd-flex')}>
                         {/** Menu-mega */}
@@ -63,34 +65,39 @@ function NavbarHeader() {
                                 <ul className={cx('ul-menu')}>
                                     {listNavbars[2].children.map((nav, index) => {
                                         return (
-                                            <MenuItemMega key={index} data={nav} className={cx('nav-item')}>
+                                            <MenuItemMega key={index} data={nav} className={cx('nav-item', '')}>
                                                 {/**lv2 */}
                                                 {!!nav.children ? (
                                                     <ul className={cx('ul-content-right-1', 'row')}>
-                                                        {
-                                                            nav.children.map((item, index)=>{
-                                                                return (
-                                                                    <li key={index} className={cx('nav-item','lv2 col-lg-3 col-md-12')}>
-                                                                        <h4>
-                                                                            <Link to={item.path} title={item.title}>
-                                                                                {item.title}
-                                                                            </Link>
-                                                                        </h4>
-                                                                        {
-                                                                            !!item.children ? (
-                                                                                <ul className={cx('ul-content-right-2')}>
-                                                                                {item.children.map((item, index)=> {
-                                                                                    return (
-                                                                                        <MenuItem key={index} data={item} className={cx('nav-item')}/>
-                                                                                    )
-                                                                                })}
-                                                                                </ul>
-                                                                            ):('')
-                                                                        }
-                                                                    </li>
-                                                                )
-                                                            })
-                                                        }
+                                                        {nav.children.map((item, index) => {
+                                                            return (
+                                                                <li
+                                                                    key={index}
+                                                                    className={cx('nav-item', 'lv2 col-lg-3 col-md-12')}
+                                                                >
+                                                                    <h4>
+                                                                        <Link to={item.path} title={item.title}>
+                                                                            {item.title}
+                                                                        </Link>
+                                                                    </h4>
+                                                                    {!!item.children ? (
+                                                                        <ul className={cx('ul-content-right-2')}>
+                                                                            {item.children.map((item, index) => {
+                                                                                return (
+                                                                                    <MenuItem
+                                                                                        key={index}
+                                                                                        data={item}
+                                                                                        className={cx('nav-item')}
+                                                                                    />
+                                                                                );
+                                                                            })}
+                                                                        </ul>
+                                                                    ) : (
+                                                                        ''
+                                                                    )}
+                                                                </li>
+                                                            );
+                                                        })}
                                                     </ul>
                                                 ) : (
                                                     ''
@@ -102,7 +109,7 @@ function NavbarHeader() {
                             </div>
                         </div>
                         {/** Header-nav*/}
-                        <div className={cx('waper-header-nav')}>
+                        <div className={cx('wapper-header-nav')}>
                             <nav className={cx('header-nav')}>
                                 {/**lv1 */}
                                 <ul className={cx('item-big')}>
@@ -115,16 +122,12 @@ function NavbarHeader() {
                                                         {/**lv3 */}
                                                         {nav.children.map((data, index) => {
                                                             return (
-                                                                <MenuItem key={index} data={data} className={cx('')}>
+                                                                <MenuItem key={index} data={data}>
                                                                     {!!data.children ? (
                                                                         <ul>
                                                                             {data.children.map((data, index) => {
                                                                                 return (
-                                                                                    <MenuItem
-                                                                                        key={index}
-                                                                                        data={data}
-                                                                                        className={cx('')}
-                                                                                    />
+                                                                                    <MenuItem key={index} data={data} />
                                                                                 );
                                                                             })}
                                                                         </ul>
@@ -143,6 +146,28 @@ function NavbarHeader() {
                                     })}
                                 </ul>
                             </nav>
+                        </div>
+                    </div>
+                    <div className={cx('contact-bar')}>
+                        <div className={cx('incontact')}>
+                            <div className={cx('contact-phone')}>
+                                <div className={cx('icon')}>
+                                    <img src={images.phone} alt="Icon phone" />
+                                </div>
+                                <div className={cx('title')}>
+                                    <p>Tư vẫn hỗ trợ</p>
+                                    <Link href="#">19006750</Link>
+                                </div>
+                            </div>
+                            <div className={cx('contact-phone', 'account-header')}>
+                                <div className={cx('icon')}>
+                                    <img src={images.user} alt="Icon user" />
+                                </div>
+                                <div className={cx('title')}>
+                                    <p>Xin chào!</p>
+                                    <Link to="/login">Đăng nhập</Link>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

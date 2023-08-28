@@ -10,7 +10,7 @@ import Questions from '~/pages/Questions';
 import Recruit from '~/pages/Recruit';
 import Login from '~/pages/Login';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretDown, faCaretRight } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown, faCaretDown, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { thumbIcons, thumbSmall } from '~/assets/images';
 
 //Public Routes
@@ -37,6 +37,7 @@ const publicRoutes = [
                 thumbIcon: thumbIcons.phone,
                 thumnSmall: thumbSmall.phone,
                 iconDesktop: <FontAwesomeIcon icon={faCaretRight} />,
+                iconMenuMega: <FontAwesomeIcon icon={faAngleDown} />,
                 children: [
                     {
                         path: '#',
@@ -118,6 +119,8 @@ const publicRoutes = [
                 thumbIcon: thumbIcons.fashion,
                 thumnSmall: thumbSmall.fashion,
                 iconDesktop: <FontAwesomeIcon icon={faCaretRight} />,
+                iconMenuMega: <FontAwesomeIcon icon={faAngleDown} />,
+
                 children: [
                     { path: '#', title: 'Thời trang nữ' },
                     { path: '#', title: 'Thời trang nam' },
