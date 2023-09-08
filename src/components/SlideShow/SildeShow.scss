@@ -1,0 +1,55 @@
+.wapper-slide {
+  position: relative;
+
+  //slide-item
+  .slide-item {
+    img {
+      border-radius: 10px;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -ms-border-radius: 10px;
+      -o-border-radius: 10px;
+    }
+  }
+
+  //indicators
+  .indicators {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+
+    .indicator {
+      display: inline-block;
+      font-size: 0;
+      width: 5px;
+      height: 5px;
+      background-color: #000;
+      opacity: 0.2;
+      border-radius: 50%;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      -o-border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .indicator+.indicator {
+      margin-left: 5px;
+    }
+
+    .indicator.active {
+      background-color: #fff;
+      opacity: 1;
+      width: 30px;
+      border-radius: 2px;
+      -webkit-border-radius: 2px;
+      -moz-border-radius: 2px;
+      -ms-border-radius: 2px;
+      -o-border-radius: 2px;
+    }
+  }
+}

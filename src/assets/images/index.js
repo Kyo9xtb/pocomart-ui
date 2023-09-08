@@ -27,5 +27,12 @@ const thumbSmall = {
     home: require('~/assets/images/thumb/small/icon9.png'),
     books: require('~/assets/images/thumb/small/icon10.png'),
 };
+const slides = {
+    slide1: require('~/assets/images/slider/slider_1.jpg'),
+    slide2: require('~/assets/images/slider/slider_2.jpg'),
+    slide3: require('~/assets/images/slider/slider_3.jpg'),
+    slide4: require('~/assets/images/slider/slider_4.jpg'),
+    slide5: require('~/assets/images/slider/slider_5.jpg'),
+};
 export default images;
-export { thumbIcons, thumbSmall };
+export { thumbIcons, thumbSmall, slides };
