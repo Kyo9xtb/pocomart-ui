@@ -3,6 +3,7 @@
 
   //slide-item
   .slide-item {
+    display: block !important;
     img {
       border-radius: 10px;
       -webkit-border-radius: 10px;
@@ -13,16 +14,13 @@
   }
 
   //indicators
-  .indicators {
-    position: absolute;
-    bottom: 10px;
+  .slick-dots {
+    bottom: 15px;
     left: 0;
     z-index: 10;
     width: 100%;
-    margin: 0 !important;
-    padding: 0 !important;
 
-    .indicator {
+    li {
       display: inline-block;
       font-size: 0;
       width: 5px;
@@ -35,13 +33,23 @@
       -ms-border-radius: 50%;
       -o-border-radius: 50%;
       cursor: pointer;
+
+      button {
+        width: inherit;
+        height: inherit;
+        padding: 0;
+
+        &::before {
+          content: none;
+        }
+      }
     }
 
-    .indicator+.indicator {
+    li+li {
       margin-left: 5px;
     }
 
-    .indicator.active {
+    .slick-active {
       background-color: #fff;
       opacity: 1;
       width: 30px;
