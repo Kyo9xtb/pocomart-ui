@@ -1,13 +1,15 @@
 //Import library
+import React, { Fragment } from 'react';
 import classNames from 'classnames/bind';
-import { Fragment } from 'react';
 
 //Import file
 import styles from './Home.module.scss';
-import SlideShow from '~/components/SlideShow';
+import SlideShow, { SlideCategory } from '~/components/SlideShow';
 
 //Data Test
 import { slides } from '~/assets/images';
+import { publicRoutes } from '~/routes';
+
 const cx = classNames.bind(styles);
 
 const listSlides = [
@@ -39,6 +41,11 @@ function Home() {
             <div className={cx('section-slide')}>
                 <div className={cx('container')}>
                     <SlideShow data={listSlides} />
+                </div>
+            </div>
+            <div className={cx('section-category')}>
+                <div className={cx('container')}>
+                    <SlideCategory data={publicRoutes[2].children} />
                 </div>
             </div>
         </Fragment>

@@ -7,6 +7,8 @@ import 'slick-carousel/slick/slick-theme.css';
 //File import
 import classNames from 'classnames/bind';
 import styles from './SildeShow.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 //Data Test
 
@@ -34,4 +36,66 @@ function SlideShow({ data }) {
     );
 }
 
+function SlideCategory({ data }) {
+    const settings = {
+        infinite: false,
+        className: 'wapper-slide',
+        slidesToShow: 9.5,
+        prevArrow: (
+            <button type="button" class="slick-prev">
+                <FontAwesomeIcon icon={faAngleLeft} />
+            </button>
+        ),
+        nextArrow: (
+            <button type="button" class="slick-next">
+                <FontAwesomeIcon icon={faAngleRight} />
+            </button>
+        ),
+        responsive: [
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 8.5,
+                    slidesToScroll: 5,
+                },
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 5.5,
+                    arrows: false,
+                    slidesToScroll: 4,
+                },
+            },
+
+            {
+                breakpoint: 576,
+                settings: {
+                    slidesToShow: 4.5,
+                    arrows: false,
+                    slidesToScroll: 3,
+                },
+            },
+        ],
+    };
+    return (
+        <Slider {...settings}>
+            {data.map((data, index) => {
+                return (
+                    <div key={index} className={cx('cate-item')}>
+                        <Link className={cx('image')} to="#" title={data.title}>
+                            <img src={data.thumbSmall} alt={data.title} />
+                        </Link>
+                        <h4>
+                            <Link to="#" title={data.title}>
+                                {data.title}
+                            </Link>
+                        </h4>
+                    </div>
+                );
+            })}
+        </Slider>
+    );
+}
 export default SlideShow;
+export { SlideCategory };
