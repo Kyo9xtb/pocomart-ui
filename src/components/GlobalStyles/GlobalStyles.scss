@@ -35,8 +35,9 @@ img {
 a {
     text-decoration: none;
     color: inherit;
+
     &:hover {
-        color: #ffb416 !important;
+        color: #ffb416;
     }
 }
 
@@ -167,5 +168,33 @@ button {
         &:hover {
             background-color: #ffb416;
         }
+    }
+}
+
+//title-block
+.title-block {
+    display: block;
+    margin: 0 0 10px;
+    border-bottom: solid 2px #eb3e32;
+
+    &.upscape {
+
+        a,
+        span {
+            text-transform: uppercase;
+        }
+    }
+
+    a,
+    span {
+        display: inline-block;
+        font-size: 18px;
+        line-height: 40px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #eb3e32;
+        padding: 0 20px 0 10px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
     }
 }

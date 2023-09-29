@@ -181,14 +181,14 @@ const publicRoutes = [
         title: 'Câu hỏi thường gặp',
     },
     {
-        path: '/contact',
-        component: Contact,
-        title: 'Liên hệ',
-    },
-    {
         path: '/recruit',
         component: Recruit,
         title: 'Tuyển dụng',
+    },
+    {
+        path: '/contact',
+        component: Contact,
+        title: 'Liên hệ',
     },
     {
         path: '/login',

@@ -52,7 +52,7 @@ function MenuItemMega({ data, className, children }) {
 function NavbarHeader() {
     return (
         <div className={cx('header-nav-main')}>
-            <div className={cx('container', ' container')}>
+            <div className={cx('container ', 'container')}>
                 <div className={cx('header-menu')}>
                     <div className={cx('wapper-nav', 'd-flex')}>
                         {/** Menu-mega */}
@@ -113,7 +113,7 @@ function NavbarHeader() {
                             <nav className={cx('header-nav')}>
                                 {/**lv1 */}
                                 <ul className={cx('item-big')}>
-                                    {listNavbars.map((nav, index) => {
+                                    {listNavbars.slice(0,7).map((nav, index) => {
                                         return (
                                             <MenuItem key={index} data={nav} className={cx('nav-item')}>
                                                 {/**lv2 */}

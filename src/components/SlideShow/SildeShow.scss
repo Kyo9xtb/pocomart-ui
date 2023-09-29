@@ -163,3 +163,25 @@
   opacity: 0.3;
   cursor: default !important;
 }
+
+.wapper-slide-iwish {
+  .slick-arrow {
+    position: absolute;
+    top: -30px;
+    right: 0;
+    background-color: transparent;
+    border-radius: unset;
+    -webkit-border-radius: unset;
+    -moz-border-radius: unset;
+    -ms-border-radius: unset;
+    -o-border-radius: unset;
+
+    &.slick-prev {
+      left: unset;
+      right: 30px;
+    }
+    svg {
+      font-size: 20px !important;
+    }
+  }
+}

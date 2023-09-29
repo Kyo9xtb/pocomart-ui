@@ -2,6 +2,7 @@ const images = {
     logo: require('~/assets/images/logo.png'),
     phone: require('~/assets/images/call.svg').default,
     user: require('~/assets/images/users.svg').default,
+    bgIwish: require('~/assets/images/bg-iwish.png'),
 };
 const thumbIcons = {
     phone: require('~/assets/images/thumb/icon/icon1.png'),
@@ -34,5 +35,18 @@ const slides = {
     slide4: require('~/assets/images/slider/slider_4.jpg'),
     slide5: require('~/assets/images/slider/slider_5.jpg'),
 };
+const bannerProductTab = {
+    phone: require('~/assets/images/banner/banner_1_tab.jpg'),
+    fashion: require('~/assets/images/banner/banner_2_tab.jpg'),
+    kitchen: require('~/assets/images/banner/banner_3_tab.jpg'),
+}
+const technological = {
+    banner1:require('~/assets/images/banner/banner_tech_1.jpg'),
+    banner2:require('~/assets/images/banner/banner_tech_2.jpg'),
+}
+const fashion = {
+    banner1:require('~/assets/images/banner/banner_fashion_1.jpg'),
+    banner2:require('~/assets/images/banner/banner_fashion_2.jpg'),
+}
 export default images;
-export { thumbIcons, thumbSmall, slides };
+export { thumbIcons, thumbSmall, slides, bannerProductTab, technological, fashion };
