@@ -13,6 +13,26 @@ import ItemProduct from '../ItemProduct';
 
 //Data Test
 const cx = classNames.bind(styles);
+const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => (
+    <button
+        {...props}
+        className={'slick-prev slick-arrow' + (currentSlide === 0 ? ' slick-disabled' : '')}
+        aria-disabled={currentSlide === 0 ? true : false}
+        type="button"
+    >
+        <FontAwesomeIcon icon={faAngleLeft} />
+    </button>
+);
+const SlickArrowRight = ({ currentSlide, slideCount, ...props }) => (
+    <button
+        {...props}
+        className={'slick-next slick-arrow' + (currentSlide === slideCount - 1 ? ' slick-disabled' : '')}
+        aria-disabled={currentSlide === slideCount - 1 ? true : false}
+        type="button"
+    >
+        <FontAwesomeIcon icon={faAngleRight} />
+    </button>
+);
 function SlideShow({ data }) {
     const settings = {
         dots: true,
@@ -41,16 +61,8 @@ function SlideCategory({ data }) {
         infinite: false,
         className: 'wapper-slide',
         slidesToShow: 9.5,
-        prevArrow: (
-            <button type="button" className="slick-prev">
-                <FontAwesomeIcon icon={faAngleLeft} />
-            </button>
-        ),
-        nextArrow: (
-            <button type="button" className="slick-next">
-                <FontAwesomeIcon icon={faAngleRight} />
-            </button>
-        ),
+        prevArrow: <SlickArrowLeft />,
+        nextArrow: <SlickArrowRight />,
         responsive: [
             {
                 breakpoint: 992,
@@ -111,16 +123,8 @@ function SlideTabProduct({ data, className }) {
                 breakpoint: 1500,
                 settings: {
                     arrows: true,
-                    prevArrow: (
-                        <button type="button" className="slick-prev">
-                            <FontAwesomeIcon icon={faAngleLeft} />
-                        </button>
-                    ),
-                    nextArrow: (
-                        <button type="button" className="slick-next">
-                            <FontAwesomeIcon icon={faAngleRight} />
-                        </button>
-                    ),
+                    prevArrow: <SlickArrowLeft />,
+                    nextArrow: <SlickArrowRight />,
                 },
             },
             {
@@ -209,16 +213,8 @@ function SlideIwish({ data, className }) {
         infinite: false,
         className: cx('wapper-slide-iwish'),
         slidesToShow: 5,
-        prevArrow: (
-            <button type="button" className="slick-prev">
-                <FontAwesomeIcon icon={faAngleLeft} />
-            </button>
-        ),
-        nextArrow: (
-            <button type="button" className="slick-next">
-                <FontAwesomeIcon icon={faAngleRight} />
-            </button>
-        ),
+        prevArrow: <SlickArrowLeft />,
+        nextArrow: <SlickArrowRight />,
         responsive: [
             {
                 breakpoint: 1500,

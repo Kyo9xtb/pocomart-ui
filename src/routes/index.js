@@ -1,6 +1,8 @@
-//Layout
-// import { HeaderOnly } from '~/components/Layout';
-//Pages
+//Libary import
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleDown, faCaretDown, faCaretRight } from '@fortawesome/free-solid-svg-icons';
+//Layout import
+//Pages import
 import Home from '~/pages/Home';
 import About from '~/pages/About';
 import Contact from '~/pages/Contact';
@@ -9,10 +11,8 @@ import Products from '~/pages/Products';
 import Questions from '~/pages/Questions';
 import Recruit from '~/pages/Recruit';
 import Login from '~/pages/Login';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown, faCaretDown, faCaretRight } from '@fortawesome/free-solid-svg-icons';
-import { thumbIcons, thumbSmall } from '~/assets/images';
 
+import { thumbIcons, thumbSmall } from '~/assets/images';
 //Public Routes
 const publicRoutes = [
     {
@@ -21,13 +21,14 @@ const publicRoutes = [
         title: 'Trang chủ',
     },
     {
-        path: '/about',
+        path: '/gioi-thieu',
         component: About,
         title: 'Giới thiệu',
     },
     {
         path: '/products',
         component: Products,
+        layout: "ProductLayout",
         title: 'Sản phẩm',
         iconDesktop: <FontAwesomeIcon icon={faCaretDown} />,
         children: [
@@ -176,17 +177,17 @@ const publicRoutes = [
         ],
     },
     {
-        path: '/questions',
+        path: '/cau-hoi-thuong-gap',
         component: Questions,
         title: 'Câu hỏi thường gặp',
     },
     {
-        path: '/recruit',
+        path: '/tuyen-dung',
         component: Recruit,
         title: 'Tuyển dụng',
     },
     {
-        path: '/contact',
+        path: '/lien-he',
         component: Contact,
         title: 'Liên hệ',
     },

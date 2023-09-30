@@ -163,7 +163,7 @@ function Home() {
                         <ul>
                             {publicRoutes[2].children.slice(0, 5).map((item, index) => {
                                 return (
-                                    <li>
+                                    <li key={index}>
                                         <Link to={item.path} title={item.title}>
                                             {item.title}
                                         </Link>
@@ -192,7 +192,7 @@ function Home() {
                                 <div className={cx('slide-tech row')}>
                                     {listCourses.slice(0, 8).map((item, index) => {
                                         return (
-                                            <div className={cx('col-lg-3 col-md-3 col-6')}>
+                                            <div key={index} className={cx('col-lg-3 col-md-3 col-6')}>
                                                 <ItemProduct data={item} />
                                             </div>
                                         );

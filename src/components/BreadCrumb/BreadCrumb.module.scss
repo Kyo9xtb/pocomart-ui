@@ -1,0 +1,37 @@
+.bread-crumb {
+    padding: 15px 0;
+
+    .wapper-list{
+        font-size: 14px;
+        font-weight: 400;
+        text-align: left;
+        text-overflow: ellipsis;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 25px;
+        line-height: 24px;
+        display: block;
+        background-color: transparent;
+        border-radius: 0;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        -ms-border-radius: 0;
+        -o-border-radius: 0;
+        li {
+            display: inline-block;
+            .mr_lr, span {
+                padding: 0 3px;
+                color: #323c42;
+            }
+            strong {
+                color: #ffb416;
+                font-weight: 400;
+                text-decoration: none;
+                span {
+                    color: #ffb416;
+                }
+            }
+        }
+}
+}

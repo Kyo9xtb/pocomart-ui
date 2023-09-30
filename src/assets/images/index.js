@@ -3,6 +3,7 @@ const images = {
     phone: require('~/assets/images/call.svg').default,
     user: require('~/assets/images/users.svg').default,
     bgIwish: require('~/assets/images/bg-iwish.png'),
+    imgRecruit:require('~/assets/images/recruit.jpg'),
 };
 const thumbIcons = {
     phone: require('~/assets/images/thumb/icon/icon1.png'),
