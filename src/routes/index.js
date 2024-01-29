@@ -10,9 +10,14 @@ import News from '~/pages/News';
 import Products from '~/pages/Products';
 import Questions from '~/pages/Questions';
 import Recruit from '~/pages/Recruit';
-import Login from '~/pages/Login';
+import Cart from '~/pages/Cart';
+
+import { Login, Register } from '~/pages/Account';
 
 import { thumbIcons, thumbSmall } from '~/assets/images';
+import { NewsLayout } from '~/components/Layout';
+import Favourites from '~/pages/Favourite';
+import Compare from '~/pages/Compare';
 //Public Routes
 const publicRoutes = [
     {
@@ -28,7 +33,7 @@ const publicRoutes = [
     {
         path: '/products',
         component: Products,
-        layout: "ProductLayout",
+        // layout: ProductLayout,
         title: 'Sản phẩm',
         iconDesktop: <FontAwesomeIcon icon={faCaretDown} />,
         children: [
@@ -148,6 +153,7 @@ const publicRoutes = [
     {
         path: '/news',
         component: News,
+        layout: NewsLayout,
         title: 'Tin mới nhất',
         iconDesktop: <FontAwesomeIcon icon={faCaretDown} />,
         children: [
@@ -177,24 +183,45 @@ const publicRoutes = [
         ],
     },
     {
-        path: '/cau-hoi-thuong-gap',
+        path: '/questions',
         component: Questions,
         title: 'Câu hỏi thường gặp',
     },
     {
-        path: '/tuyen-dung',
+        path: '/recruit',
         component: Recruit,
         title: 'Tuyển dụng',
     },
     {
-        path: '/lien-he',
+        path: '/contact',
         component: Contact,
         title: 'Liên hệ',
     },
     {
-        path: '/login',
+        path: '/account/login',
         component: Login,
         title: 'Đăng nhập',
+    },
+    {
+        path: '/account/register',
+        component: Register,
+        title: 'Đăng ký',
+    },
+    {
+        path: '/cart',
+        component: Cart,
+        title: 'Giỏ hàng',
+    },
+    {
+        path: '/yeu-thich',
+        component: Favourites,
+        layout: NewsLayout,
+        title: 'Yêu thích',
+    },
+    {
+        path: '/so-sanh',
+        component: Compare,
+        title: 'So sánh',
     },
 ];
 //Private Routes

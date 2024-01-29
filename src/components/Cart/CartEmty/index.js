@@ -16,7 +16,6 @@ function CartEmty() {
                 x="0px"
                 y="0px"
                 viewBox="0 0 201.387 201.387"
-                style={{ enableBackground: 'new 0 0 201.387 201.387;' }}
                 xmlSpace="preserve"
             >
                 {' '}

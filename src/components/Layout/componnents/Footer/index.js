@@ -5,11 +5,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faGoogle, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 
 //File import
-import { publicRoutes as listPages } from '~/routes';
+import { publicRoutes as listPagesw } from '~/routes';
 import styles from './Footer.module.scss';
 
 const cx = classNames.bind(styles);
 
+let listPages = []
 const listMenus = [
     {
         title: 'Văn phòng giao dịch',
