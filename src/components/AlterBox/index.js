@@ -19,15 +19,14 @@ function realTime() {
     let time = `${hours}:${minutes}:${seconds}`;
     return time;
 }
-console.log(realTime());
 function AlterBox({
     success = false,
     info = false,
     warning = false,
     system = false,
-    danger=false,
-    linght=false,
-    dark=false,
+    danger = false,
+    linght = false,
+    dark = false,
     className,
     icon,
     title,
@@ -45,15 +44,21 @@ function AlterBox({
         warning,
         danger,
         linght,
-        dark
+        dark,
     });
     return (
         <div className={classes} {...props}>
-            <button className={cx('close')}>
+            <button
+                className={cx('close')}
+                onClick={(e) => {
+                    console.log(e.target.parentNode);
+                    e.target.parentNode.style.display = 'none';
+                }}
+            >
                 <FontAwesomeIcon icon={faXmark} />
             </button>
             <div className={cx('title-alter')}>
-                <div class={cx('title')}>
+                <div className={cx('title')}>
                     {system && (
                         <Fragment>
                             <FontAwesomeIcon icon={faGear} />
@@ -64,9 +69,9 @@ function AlterBox({
                     {success && (!!icon ? icon : <FontAwesomeIcon icon={faCircleCheck} />)}
                     <strong>{title}</strong>
                 </div>
-                {system && <div class={cx('time')}>{realTime()}</div>}
+                {system && <div className={cx('time')}>{realTime()}</div>}
             </div>
-            <div class={cx('content-alter')}>
+            <div className={cx('content-alter')}>
                 <span>{children}</span>
             </div>
         </div>

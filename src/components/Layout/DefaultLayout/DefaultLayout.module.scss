@@ -1,3 +1,9 @@
-.content {
-    color: red;
+.btn-go-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    background-color: transparent;
+    font-size: 25px;
+    color: var(--primary);
 }

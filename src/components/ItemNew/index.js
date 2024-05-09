@@ -6,27 +6,24 @@ import { Link } from 'react-router-dom';
 import styles from './ItemNew.module.scss';
 
 const cx = classNames.bind(styles);
-function ItemNew({ data, className, label = true }) {
+function ItemNew({ data, className, label = false }) {
+    const { Title, Compendious, Picture, Content,  } = data;
+    const classes = cx('item-blog-base', {
+        [className]: className,
+    });
     return (
-        <div className={cx('item-blog-base')}>
+        <div className={classes}>
             <Link to="#" className={cx('thumb')} title="">
-                <img
-                    className={cx('lazyload','img-responsive','loaded')}
-                    src="https://bizweb.dktcdn.net/thumb/large/100/429/689/articles/galaxy-fold-black-home-screen-open.jpg?v=1623603593787"
-                    alt=""
-                />
+                <img className={cx('lazyload', 'img-responsive', 'loaded')} src={Picture} alt={Title} />
                 {label ? <span className={cx('thead')}>Tin tuc</span> : ''}
             </Link>
             <div className={cx('content-blog')}>
                 <h3>
                     <Link to="#" className={cx('a-title')}>
-                        Galaxy Z Fold 3 và Z Flip 3 sẽ có giá rẻ hơn
+                        {Compendious}
                     </Link>
                 </h3>
-                <p>
-                    Hai smartphone đắt nhất của Samsung sẽ có giá rẻ hơn 400 USD so với thế hệ trước. Theo báo cáo của
-                    SamMobile
-                </p>
+                <p>{Content}</p>
             </div>
         </div>
     );

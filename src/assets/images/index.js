@@ -3,7 +3,9 @@ const images = {
     phone: require('~/assets/images/call.svg').default,
     user: require('~/assets/images/users.svg').default,
     bgIwish: require('~/assets/images/bg-iwish.png'),
-    imgRecruit:require('~/assets/images/recruit.jpg'),
+    imgRecruit: require('~/assets/images/recruit.jpg'),
+    btnFacebook: require('~/assets/images/fb-btn.svg').default,
+    btnGoogle: require('~/assets/images/gp-btn.svg').default,
 };
 const thumbIcons = {
     phone: require('~/assets/images/thumb/icon/icon1.png'),
@@ -40,14 +42,15 @@ const bannerProductTab = {
     phone: require('~/assets/images/banner/banner_1_tab.jpg'),
     fashion: require('~/assets/images/banner/banner_2_tab.jpg'),
     kitchen: require('~/assets/images/banner/banner_3_tab.jpg'),
-}
+};
 const technological = {
-    banner1:require('~/assets/images/banner/banner_tech_1.jpg'),
-    banner2:require('~/assets/images/banner/banner_tech_2.jpg'),
-}
+    banner1: require('~/assets/images/banner/banner_tech_1.jpg'),
+    banner2: require('~/assets/images/banner/banner_tech_2.jpg'),
+};
 const fashion = {
-    banner1:require('~/assets/images/banner/banner_fashion_1.jpg'),
-    banner2:require('~/assets/images/banner/banner_fashion_2.jpg'),
-}
+    banner1: require('~/assets/images/banner/banner_fashion_1.jpg'),
+    banner2: require('~/assets/images/banner/banner_fashion_2.jpg'),
+};
+
 export default images;
 export { thumbIcons, thumbSmall, slides, bannerProductTab, technological, fashion };
