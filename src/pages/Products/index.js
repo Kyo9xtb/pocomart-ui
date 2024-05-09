@@ -102,7 +102,7 @@ function Products() {
 
     return (
         <Fragment>
-            <BreadCrumb title="Tất cả sản phẩm" />
+            {/* <BreadCrumb title="Tất cả sản phẩm" /> */}
             <div className={cx('container')}>
                 <div className={cx('row')}>
                     <SideBar data={publicRoutes[2]} className={cx('left-content', 'col-lg-3 col-md-4 col-sm-4')} />
