@@ -13,17 +13,9 @@ const cx = classNames.bind(styles);
 
 function ItemProduct({ data, className }) {
     const [state, dispatch] = useStore();
-    const { Compares, Favorites } = state;
+    const { Favorites } = state;
     const { id, product_name, market_price, price, sale, image_url } = data;
-    const classes = cx('item-product-main', {
-        [className]: className,
-    });
-    const isChecksProductCompares = Compares.some((product) => {
-        if (product.id === id) {
-            return true;
-        }
-        return false;
-    });
+    const classes = cx('item-product-main');
     const isChecksProductFavorites = Favorites.some((product) => {
         if (product.id === id) {
             return true;
@@ -57,7 +49,7 @@ function ItemProduct({ data, className }) {
         data.quantity = 1;
         dispatch(actions.addToCart(data));
     };
-
+    const isChecksProductCompares = true;
     return (
         <div className={classes}>
             <div className={cx('wapper-item')}>
