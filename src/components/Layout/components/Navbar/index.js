@@ -1,4 +1,5 @@
 //Library import
+import { Fragment } from 'react';
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 
@@ -93,14 +94,14 @@ function NavbarHeader() {
                                                                             })}
                                                                         </ul>
                                                                     ) : (
-                                                                        ''
+                                                                        <Fragment/>
                                                                     )}
                                                                 </li>
                                                             );
                                                         })}
                                                     </ul>
                                                 ) : (
-                                                    ''
+                                                    <Fragment/>
                                                 )}
                                             </MenuItemMega>
                                         );
@@ -113,7 +114,7 @@ function NavbarHeader() {
                             <nav className={cx('header-nav')}>
                                 {/**lv1 */}
                                 <ul className={cx('item-big')}>
-                                    {listNavbars.slice(0,7).map((nav, index) => {
+                                    {listNavbars.slice(0, 7).map((nav, index) => {
                                         return (
                                             <MenuItem key={index} data={nav} className={cx('nav-item')}>
                                                 {/**lv2 */}

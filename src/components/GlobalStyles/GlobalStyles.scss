@@ -17,7 +17,6 @@
     box-sizing: border-box;
 }
 
-
 body {
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
@@ -178,7 +177,6 @@ button {
     border-bottom: solid 2px #eb3e32;
 
     &.upscape {
-
         a,
         span {
             text-transform: uppercase;
@@ -206,7 +204,8 @@ button {
     }
 }
 .title-block-page {
-    h1, h2 {
+    h1,
+    h2 {
         font-size: 20px;
         font-weight: bold;
         text-transform: uppercase;
@@ -220,3 +219,32 @@ button {
     margin-bottom: 40px;
     min-height: 400px;
 }
+
+//Pagintion
+// .pagination {
+//     .page-item {
+//         &:first-child,&:last-child {
+//             .page-link{
+//             }
+//         }
+//     }
+//     .page-link {
+//         font-weight: 400;
+//         font-size: 14px;
+//         margin: 0 2.5px;
+//         padding: 0;
+//         width: 35px;
+//         height: 35px;
+//         line-height: 35px;
+//         color: #323c42;
+//         background-color: #fff;
+//         text-align: center;
+//         text-decoration: none;
+//         border: 1px solid #e1e1e1;
+//         border-radius: 0;
+//         -webkit-border-radius: 0;
+//         -moz-border-radius: 0;
+//         -ms-border-radius: 0;
+//         -o-border-radius: 0;
+//     }
+// }

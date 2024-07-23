@@ -1,0 +1,14 @@
+.pagination {
+    .page-item {
+        
+    }
+    // .page-link {
+    //    font-weight: 400;
+    //    margin:  0 2.5px;
+    // }
+    .pagination__item--active {
+        a {
+            background-color: aqua !important;
+        }
+    }
+}

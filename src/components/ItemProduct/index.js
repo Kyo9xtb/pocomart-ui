@@ -7,30 +7,87 @@ import { faCartPlus, faChartSimple, faHeart } from '@fortawesome/free-solid-svg-
 
 //File import
 import styles from './ItemProduct.module.scss';
+import { actions, useStore } from '~/store';
 
 const cx = classNames.bind(styles);
+
 function ItemProduct({ data, className }) {
+    const [state, dispatch] = useStore();
+    const { Compares, Favorites } = state;
+    const { id, product_name, market_price, price, sale, image_url } = data;
     const classes = cx('item-product-main', {
         [className]: className,
     });
-    // const {} = data;
-    const sale = 1;
+    const isChecksProductCompares = Compares.some((product) => {
+        if (product.id === id) {
+            return true;
+        }
+        return false;
+    });
+    const isChecksProductFavorites = Favorites.some((product) => {
+        if (product.id === id) {
+            return true;
+        }
+        return false;
+    });
+    //Handle
+    const handleFavorite = (e) => {
+        e.stopPropagation();
+        const isClassActive = e.target.classList.contains(`${cx('active')}`);
+        if (isClassActive) {
+            e.target.classList.remove(`${cx('active')}`);
+            dispatch(actions.removeToFavorite(data));
+        } else {
+            e.target.classList.add(`${cx('active')}`);
+            dispatch(actions.addToFavorite(data));
+        }
+    };
+    const handleCompare = (e) => {
+        e.stopPropagation();
+        const isClassActive = e.target.classList.contains(`${cx('active')}`);
+        if (isClassActive) {
+            e.target.classList.remove(`${cx('active')}`);
+            dispatch(actions.removeToCompare(data));
+        } else {
+            e.target.classList.add(`${cx('active')}`);
+            dispatch(actions.addToCompare(data));
+        }
+    };
+    const handleAddToCart = () => {
+        data.quantity = 1;
+        dispatch(actions.addToCart(data));
+    };
+
     return (
         <div className={classes}>
             <div className={cx('wapper-item')}>
-                <div className={sale ? cx('product-thumbnail', 'sale') : cx('product-thumbnail')} data-sale="Giam 5%">
+                <div
+                    className={sale ? cx('product-thumbnail', 'sale') : cx('product-thumbnail')}
+                    data-sale={sale ? `Giảm ${sale}%` : ''}
+                >
                     <Link to="#" className={cx('image-thumb')}>
-                        <img
-                            src="https://bizweb.dktcdn.net/thumb/medium/100/429/689/products/dien-thoai-samsung-galaxy-s21-ultra-5g-256g-g998b-bac-h0l175-b6ac0e17-afc8-42a9-bb4f-aecaf81ad7e2.jpg?v=1623565400993"
-                            alt=""
-                        />
+                        <img src={image_url} alt={product_name} />
                     </Link>
                     <div className={cx('product-action')}>
                         <div className={cx('group-action')}>
-                            <button className={cx('btn-views', 'setWishlist')}>
+                            <button
+                                className={
+                                    isChecksProductFavorites
+                                        ? cx('btn-views', 'setWishlist', 'active')
+                                        : cx('btn-views', 'setWishlist')
+                                }
+                                onClick={handleFavorite}
+                            >
                                 <FontAwesomeIcon icon={faHeart} />
                             </button>
-                            <button className={cx('btn-views','setCompare')}>
+                            <button
+                                className={
+                                    isChecksProductCompares
+                                        ? cx('btn-views', 'setCompare', 'active')
+                                        : cx('btn-views', 'setCompare')
+                                }
+                                onClick={handleCompare}
+                            >
                                 <FontAwesomeIcon icon={faChartSimple} />
                             </button>
                         </div>
@@ -38,29 +95,29 @@ function ItemProduct({ data, className }) {
                 </div>
                 <div className={cx('product-info')}>
                     <h3 className={cx('product-name')}>
-                        <Link to="#">Samsung Galaxy Note 21</Link>
+                        <Link to="#">{product_name}</Link>
                     </h3>
                     <div className={cx('price-box')}>
                         {sale ? (
                             <Fragment>
                                 <span className={cx('price')}>
-                                    {Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(
-                                        20000000,
-                                    )}
+                                    {Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price)}
                                 </span>
                                 <span className={cx('compare-price')}>
                                     {Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(
-                                        20000000,
+                                        market_price,
                                     )}
                                 </span>
                             </Fragment>
                         ) : (
                             <span className={cx('price')}>
-                                {Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(20000000)}
+                                {Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(
+                                    market_price,
+                                )}
                             </span>
                         )}
                         <div className={cx('action-cart')}>
-                            <button className={cx('btn-views')}>
+                            <button className={cx('btn-views')} onClick={handleAddToCart}>
                                 <FontAwesomeIcon icon={faCartPlus} />
                             </button>
                         </div>
@@ -70,5 +127,4 @@ function ItemProduct({ data, className }) {
         </div>
     );
 }
-
 export default ItemProduct;

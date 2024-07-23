@@ -153,6 +153,9 @@
                                 &:hover {
                                     color: #30656b;
                                 }
+                                svg {
+                                    pointer-events: none;
+                                }
                             }
                         }
                     }
@@ -174,7 +177,7 @@
                 display: flex;
 
                 .title,
-                .pỉce-total {
+                .price-total {
                     width: 50%;
                 }
 
@@ -182,7 +185,7 @@
                     text-align: left;
                 }
 
-                .pỉce-total {
+                .price-total {
                     .price {
                         color: var(--primary);
                         font-weight: bold;

@@ -5,7 +5,7 @@ import classNames from 'classnames/bind';
 import styles from '../Cart.module.scss';
 const cx = classNames.bind(styles);
 
-function CartEmty() {
+function CartEmpty() {
     return (
         <div className={cx('cart-emty-message')}>
             <svg
@@ -16,7 +16,6 @@ function CartEmty() {
                 x="0px"
                 y="0px"
                 viewBox="0 0 201.387 201.387"
-                style={{ enableBackground: 'new 0 0 201.387 201.387;' }}
                 xmlSpace="preserve"
             >
                 {' '}
@@ -91,4 +90,4 @@ function CartEmty() {
     );
 }
 
-export default CartEmty;
+export default CartEmpty;

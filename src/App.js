@@ -1,7 +1,8 @@
 import { Fragment } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { publicRoutes } from '~/routes';
-import { DefaultLayout, ProductLayout } from '~/components/Layout';
+import { DefaultLayout } from '~/components/Layout';
+
 
 function App() {
     return (
@@ -12,9 +13,7 @@ function App() {
                         let Layout = DefaultLayout;
                         let Page = route.component;
                         if (route.layout) {
-                            if (route.layout === 'ProductLayout') {
-                                Layout = ProductLayout;
-                            }
+                            Layout = route.layout;
                         } else if (route.layout === null) {
                             Layout = Fragment;
                         }
@@ -35,5 +34,4 @@ function App() {
         </Router>
     );
 }
-
 export default App;

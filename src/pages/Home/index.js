@@ -8,9 +8,11 @@ import styles from './Home.module.scss';
 import SlideShow, { SlideCategory, SlideFashion, SlideIwish, SlideTabProduct } from '~/components/SlideShow';
 import { slides, bannerProductTab, technological, fashion } from '~/assets/images';
 import { publicRoutes } from '~/routes';
-import listCourses from '~/listCourses';
 import ItemProduct from '~/components/ItemProduct';
 import ItemNew from '~/components/ItemNew';
+
+import listNews from '~/config/listNews';
+import {useProducts} from '~/hooks';
 
 //Data Test
 const cx = classNames.bind(styles);
@@ -37,26 +39,6 @@ const listSlides = [
         title: 'slider_5',
     },
 ];
-const listProductTab = [
-    {
-        title: 'Điện thoại',
-        subTitle: 'Giảm ngay 1 triệu khi mua online',
-        banner: bannerProductTab.phone,
-        childern: [{}],
-    },
-    {
-        title: 'Thời trang',
-        subTitle: 'Giảm giá cực lớn lên tới 70%',
-        banner: bannerProductTab.fashion,
-        childern: [{}],
-    },
-    {
-        title: 'Gia Dụng',
-        subTitle: 'Giá siêu ưu đãi lên tới 30%',
-        banner: bannerProductTab.kitchen,
-        childern: [{}],
-    },
-];
 const listBannerTech = [
     {
         path: '#',
@@ -81,17 +63,41 @@ const listFashion = [
         banner: fashion.banner2,
     },
 ];
+// const listProducts = ListProduct;
 function Home() {
     document.title = 'POCO Mart | Thiên đường mua sắn cho mọi nhà';
+    const listProducts = useProducts('laptops');
+    //Tab-product
+    const listProductTab = [
+        {
+            title: 'Điện thoại',
+            subTitle: 'Giảm ngay 1 triệu khi mua online',
+            banner: bannerProductTab.phone,
+            children: listProducts.filter((product) => product.type.toLowerCase() === 'laptop' && product.sale !== 0),
+        },
+        {
+            title: 'Thời trang',
+            subTitle: 'Giảm giá cực lớn lên tới 70%',
+            banner: bannerProductTab.fashion,
+            children: listProducts.filter((product) => product.type.toLowerCase() === 'laptop' && product.sale <= 70),
+        },
+        {
+            title: 'Gia Dụng',
+            subTitle: 'Giá siêu ưu đãi lên tới 30%',
+            banner: bannerProductTab.kitchen,
+            children: listProducts.filter((product) => product.type.toLowerCase() === 'laptop' && product.sale <= 30),
+        },
+    ];
+
     useEffect(() => {
         const listNavTab = document.querySelectorAll(`.${cx('nav-tab')} li`);
         const listTabContent = document.querySelectorAll(`.${cx('tab-container')} .${cx('tab-content')}`);
         listNavTab.forEach((item, index) => {
             item.addEventListener('click', () => {
-                listNavTab.forEach((item, index) => {
+                listNavTab.forEach((item) => {
                     item.classList.remove(`${cx('current')}`);
                 });
-                listTabContent.forEach((item, index) => {
+                listTabContent.forEach((item) => {
                     item.classList.remove(`${cx('current')}`);
                 });
                 item.classList.add(`${cx('current')}`);
@@ -99,7 +105,7 @@ function Home() {
             });
         });
         listNavTab[0].click();
-    });
+    }, []);
     return (
         <Fragment>
             {/*section-slide*/}
@@ -142,7 +148,16 @@ function Home() {
                                             </Link>
                                         </div>
                                         <div className={cx('content-fill')}>
-                                            <SlideTabProduct data={listCourses} className={cx('item-tab-product')} />
+                                            {item.children && item.children.length !== 0 ? (
+                                                <SlideTabProduct
+                                                    data={item.children}
+                                                    className={cx('item-tab-product')}
+                                                />
+                                            ) : (
+                                                <div style={{ textAlign: 'center' }}>
+                                                    Hiện không sản phẩm khuyến mại
+                                                </div>
+                                            )}
                                         </div>
                                     </div>
                                 );
@@ -190,7 +205,7 @@ function Home() {
                             </div>
                             <div className={cx('col-lg-9 col-md-12 col-12 order-1 order-lg-2', 'no-padding-left')}>
                                 <div className={cx('slide-tech row')}>
-                                    {listCourses.slice(0, 8).map((item, index) => {
+                                    {listProducts.slice(0, 8).map((item, index) => {
                                         return (
                                             <div key={index} className={cx('col-lg-3 col-md-3 col-6')}>
                                                 <ItemProduct data={item} />
@@ -227,7 +242,7 @@ function Home() {
                             <div className={cx('col-lg-5 col-12', 'wapper-slide')}>
                                 <SlideFashion data={listFashion} className={cx('slide-fashion')} />
                             </div>
-                            {listCourses.slice(0, 8).map((item, index) => {
+                            {listProducts.slice(0, 8).map((item, index) => {
                                 return (
                                     <div key={index} className={cx('col-lg-2 col-6 col-md-3', 'item-fashion')}>
                                         <ItemProduct data={item} />
@@ -248,7 +263,7 @@ function Home() {
                             </Link>
                         </h2>
                         <div className={cx('slide-iwish')}>
-                            <SlideIwish data={listCourses} className={cx('item-iwish')} />
+                            <SlideIwish data={listProducts} className={cx('item-iwish')} />
                         </div>
                     </div>
                 </div>
@@ -262,16 +277,17 @@ function Home() {
                         </Link>
                     </h2>
                     <div className={cx('row')}>
-                        {listCourses.slice(0, 4).map((item, index) => {
+                        {listNews.slice(0, 4).map((item, index) => {
                             return (
                                 <div key={index} className={cx('col-lg-3 col-md-3 col-8')}>
-                                    <ItemNew />
+                                    <ItemNew data={item} />
                                 </div>
                             );
                         })}
                     </div>
                 </div>
             </div>
+            {/* <AlterBox system={true} info={true} title={'Thong bao'} children={'Thong bao test '} /> */}
         </Fragment>
     );
 }
