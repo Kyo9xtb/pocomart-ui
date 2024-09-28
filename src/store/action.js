@@ -1,11 +1,11 @@
 const {
     ADD_TO_CART,
     ADD_TO_COMPARE,
-    ADD_TO_FAVOURITE,
-    REMOVE_TO_FAVOURITE,
+    ADD_TO_FAVORITE,
+    REMOVE_TO_FAVORITE,
     REMOVE_FROM_CART,
     REMOVE_TO_COMPARE,
-    UPDATE_CART_QUANTILY,
+    UPDATE_CART_QUANTITY,
 } = require('./constants');
 //Action cart
 const addToCart = (payload) => ({
@@ -13,7 +13,7 @@ const addToCart = (payload) => ({
     payload,
 });
 const increaseCartQuantity = (payload) => ({
-    type: UPDATE_CART_QUANTILY,
+    type: UPDATE_CART_QUANTITY,
     payload,
 });
 const removeFromCart = (payload) => ({
@@ -22,11 +22,11 @@ const removeFromCart = (payload) => ({
 });
 //Action favourite
 const addToFavorite = (payload) => ({
-    type: ADD_TO_FAVOURITE,
+    type: ADD_TO_FAVORITE,
     payload,
 });
 const removeToFavorite = (payload) => ({
-    type: REMOVE_TO_FAVOURITE,
+    type: REMOVE_TO_FAVORITE,
     payload,
 });
 //Action compare

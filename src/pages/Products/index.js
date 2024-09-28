@@ -10,7 +10,6 @@ import {
     faArrowDownZA,
 } from '@fortawesome/free-solid-svg-icons';
 
-
 //File import
 import styles from './Product.module.scss';
 import SideBar from '~/components/SideBar';
@@ -21,7 +20,7 @@ import ItemProduct from '~/components/ItemProduct';
 import { ListProduct } from '~/config';
 
 const cx = classNames.bind(styles);
-const listProducts = ListProduct
+const listProducts = ListProduct;
 function Products() {
     const [Products, setListProducts] = useState(listProducts);
     const handleSortByNameAZ = () => {
@@ -102,46 +101,38 @@ function Products() {
 
     return (
         <Fragment>
-            <div className={cx('container')}>
-                <div className={cx('row')}>
-                    <SideBar data={publicRoutes[2]} className={cx('left-content', 'col-lg-3 col-md-4 col-sm-4')} />
-                    <div className={cx('main_container', 'collection', 'col-lg-9 col-md-12 col-sm-12')}>
-                        <BlockDes data={publicRoutes[2]} />
-                        <div className={cx('category-product')}>
-                            <div className={cx('section')}>
-                                <div className={cx('sortPagiBar')}>
-                                    <div className={cx('sort-cate')}>
-                                        <div className={cx('sort-cate-left')}>
-                                            <ul>
-                                                {listSorts.map((item, index) => {
-                                                    return (
-                                                        <li
-                                                            key={index}
-                                                            className={cx('btn-quick-sort', `${item.class}`)}
-                                                        >
-                                                            <button onClick={item.event} to={item.path}>
-                                                                {item.icon ? item.icon : <Fragment />}
-                                                                {item.title}
-                                                            </button>
-                                                        </li>
-                                                    );
-                                                })}
-                                            </ul>
-                                        </div>
+            <div className={cx('main_container', 'collection', 'col-lg-9 col-md-12 col-sm-12')}>
+                <BlockDes data={publicRoutes[2]} />
+                <div className={cx('category-product')}>
+                    <div className={cx('section')}>
+                        <div className={cx('sortPagiBar')}>
+                            <div className={cx('sort-cate')}>
+                                <div className={cx('sort-cate-left')}>
+                                    <ul>
+                                        {listSorts.map((item, index) => {
+                                            return (
+                                                <li key={index} className={cx('btn-quick-sort', `${item.class}`)}>
+                                                    <button onClick={item.event} to={item.path}>
+                                                        {item.icon ? item.icon : <Fragment />}
+                                                        {item.title}
+                                                    </button>
+                                                </li>
+                                            );
+                                        })}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={cx('products-view')}>
+                        <div className={cx('row')}>
+                            {Products.map((item, index) => {
+                                return (
+                                    <div key={index} className={cx('col-6 col-md-3 col-lg-3', 'product-col')}>
+                                        <ItemProduct data={item} className={cx('item-product-main')} />
                                     </div>
-                                </div>
-                            </div>
-                            <div className={cx('products-view')}>
-                                <div className={cx('row')}>
-                                    {Products.map((item, index) => {
-                                        return (
-                                            <div key={index} className={cx('col-6 col-md-3 col-lg-3', 'product-col')}>
-                                                <ItemProduct data={item} className={cx('item-product-main')} />
-                                            </div>
-                                        );
-                                    })}
-                                </div>
-                            </div>
+                                );
+                            })}
                         </div>
                     </div>
                 </div>

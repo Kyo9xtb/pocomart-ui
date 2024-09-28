@@ -11,12 +11,22 @@ import { actions, useStore } from '~/store';
 
 const cx = classNames.bind(styles);
 
+function FormatPrice(price) {
+    return Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price);
+}
 function ItemProduct({ data, className }) {
     const [state, dispatch] = useStore();
-    const { Favorites } = state;
+    const { Favorites, Compares } = state;
     const { id, product_name, market_price, price, sale, image_url } = data;
-    const classes = cx('item-product-main');
+    // const classes = cx('item-product-main');
+    const classes = cx('item-product-main', { [className]: className });
     const isChecksProductFavorites = Favorites.some((product) => {
+        if (product.id === id) {
+            return true;
+        }
+        return false;
+    });
+    const isChecksProductCompares = Compares.some((product) => {
         if (product.id === id) {
             return true;
         }
@@ -49,7 +59,6 @@ function ItemProduct({ data, className }) {
         data.quantity = 1;
         dispatch(actions.addToCart(data));
     };
-    const isChecksProductCompares = true;
     return (
         <div className={classes}>
             <div className={cx('wapper-item')}>
@@ -92,21 +101,11 @@ function ItemProduct({ data, className }) {
                     <div className={cx('price-box')}>
                         {sale ? (
                             <Fragment>
-                                <span className={cx('price')}>
-                                    {Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price)}
-                                </span>
-                                <span className={cx('compare-price')}>
-                                    {Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(
-                                        market_price,
-                                    )}
-                                </span>
+                                <span className={cx('price')}>{FormatPrice(price)}</span>
+                                <span className={cx('compare-price')}>{FormatPrice(market_price)}</span>
                             </Fragment>
                         ) : (
-                            <span className={cx('price')}>
-                                {Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(
-                                    market_price,
-                                )}
-                            </span>
+                            <span className={cx('price')}>{FormatPrice(market_price)}</span>
                         )}
                         <div className={cx('action-cart')}>
                             <button className={cx('btn-views')} onClick={handleAddToCart}>

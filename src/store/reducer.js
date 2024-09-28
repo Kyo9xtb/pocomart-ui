@@ -56,14 +56,14 @@ function reducer(state, action) {
             };
         //Action Favourite
         case ADD_TO_FAVORITE:
-            let newAddToFavourite = [...state.Favourites, action.payload];
+            let newAddToFavourite = [...state.Favorites, action.payload];
             localStorage.setItem('Favourites-POCOMART', JSON.stringify(newAddToFavourite));
             return {
                 ...state,
                 Favourites: newAddToFavourite,
             };
         case REMOVE_TO_FAVORITE:
-            const newRemoveFavourites = state.Favourites.filter((product) => {
+            const newRemoveFavourites = state.Favorites.filter((product) => {
                 return product.id !== Number(action.payload.id);
             });
             localStorage.setItem('Favourites-POCOMART', JSON.stringify(newRemoveFavourites));

@@ -35,7 +35,7 @@ function ItemProductCart({ data }) {
         dispatch(actions.removeFromCart(id));
     };
     const [checkPrice, setCheckPrice] = useState(false);
-    const [checkPrice,] = useState(false);
+    // const [checkPrice,] = useState(false);
     // const getProduct = ListProduct.find((item) => item.id === id);
     // useEffect(() => {
     //     if (getProduct.price !== price) {

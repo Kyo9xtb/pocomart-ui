@@ -12,7 +12,8 @@ import ItemProduct from '~/components/ItemProduct';
 import ItemNew from '~/components/ItemNew';
 
 import listNews from '~/config/listNews';
-import {useProducts} from '~/hooks';
+import { useProducts } from '~/hooks';
+import { ListProduct } from '~/config';
 
 //Data Test
 const cx = classNames.bind(styles);
@@ -66,26 +67,30 @@ const listFashion = [
 // const listProducts = ListProduct;
 function Home() {
     document.title = 'POCO Mart | Thiên đường mua sắn cho mọi nhà';
-    const listProducts = useProducts('laptops');
+    let listProducts = useProducts('laptops');
+    if (listProducts.length === 0) {
+        listProducts = ListProduct;
+    }
+    console.log("listProducts HomePage", listProducts);
     //Tab-product
     const listProductTab = [
         {
             title: 'Điện thoại',
             subTitle: 'Giảm ngay 1 triệu khi mua online',
             banner: bannerProductTab.phone,
-            children: listProducts.filter((product) => product.type.toLowerCase() === 'laptop' && product.sale !== 0),
+            // children: listProducts.filter((product) => product.type.toLowerCase() === 'laptop' && product.sale !== 0),
         },
         {
             title: 'Thời trang',
             subTitle: 'Giảm giá cực lớn lên tới 70%',
             banner: bannerProductTab.fashion,
-            children: listProducts.filter((product) => product.type.toLowerCase() === 'laptop' && product.sale <= 70),
+            // children: listProducts.filter((product) => product.type.toLowerCase() === 'laptop' && product.sale <= 70),
         },
         {
             title: 'Gia Dụng',
             subTitle: 'Giá siêu ưu đãi lên tới 30%',
             banner: bannerProductTab.kitchen,
-            children: listProducts.filter((product) => product.type.toLowerCase() === 'laptop' && product.sale <= 30),
+            // children: listProducts.filter((product) => product.type.toLowerCase() === 'laptop' && product.sale <= 30),
         },
     ];
 
@@ -263,7 +268,7 @@ function Home() {
                             </Link>
                         </h2>
                         <div className={cx('slide-iwish')}>
-                            <SlideIwish data={listProducts} className={cx('item-iwish')} />
+                            <SlideIwish data={listProducts.slice(0, 10)} className={cx('item-iwish')} />
                         </div>
                     </div>
                 </div>
@@ -287,7 +292,6 @@ function Home() {
                     </div>
                 </div>
             </div>
-            {/* <AlterBox system={true} info={true} title={'Thong bao'} children={'Thong bao test '} /> */}
         </Fragment>
     );
 }
